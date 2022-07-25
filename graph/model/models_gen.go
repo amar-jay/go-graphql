@@ -8,7 +8,7 @@ type NewTodo struct {
 }
 
 type Todo struct {
-	ID   string `json:"id"`
+	ID   string `json:"id" bson:"id"`
 	Text string `json:"text"`
 	Done bool   `json:"done"`
 	User *User  `json:"user"`
