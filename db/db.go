@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+  "os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -23,8 +24,9 @@ func Connnection() *DB {
   ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
   defer cancel()
   
-  client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+  client, err := mongo.Connect(ctx, options.Client().ApplyURI(os.Getenv("MONGODB_URI")))
   if err != nil {
+    fmt.Println("Cannot connect to MongoDB because of your stupidity")
     log.Fatal(err)
   }
 
