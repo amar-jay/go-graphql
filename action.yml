@@ -1,0 +1,11 @@
+name: 'Go GraphQL'
+description: 'A go graphql server with mongodb'
+input:
+outputs:
+  time:
+    description: "The time to connect"
+runs:
+  using: 'docker'
+  image: 'DockerFile'
+  args:
+    - ${{ input.handshake}}

@@ -24,7 +24,7 @@ func Connnection() *DB {
   ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
   defer cancel()
   
-  client, err := mongo.Connect(ctx, options.Client().ApplyURI(os.Getenv("MONGODB_URI")))
+  client, err := mongo.Connect(ctx, options.Client().ApplyURI("mangodb://root:password@mongo:27017/"))
   if err != nil {
     fmt.Println("Cannot connect to MongoDB because of your stupidity")
     log.Fatal(err)
